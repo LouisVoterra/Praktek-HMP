@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">list</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-text>
+        Product List per {{today}}
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-text>
+        Product List per {{today_ind()}}
+      </ion-text>
+      <ion-button size="small" (click)="goYesterday()" [disabled]="is5daysago">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button> 
+      <ion-button size="small" (click)="goReset()">
+        <ion-icon name="refresh-circle-outline"></ion-icon>
+      </ion-button> 
+      <ion-button size="small" (click)="goTomorrow()" [disabled]="is5daysabove">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button> 
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-text>
+        Product Name <b>{{product.productName}}</b>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-text>
+        Product Price <b>Rp {{product.productPrice}}</b>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-text>
+        Quantity : 
+      </ion-text>
+      <ion-button size="small" (click)="reduce()" [disabled]="is5daysago">
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-button> 
+      <ion-text>
+                  <b>{{product.productQuantity}}</b>
+      </ion-text>
+      <ion-button size="small" (click)="increase()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>   
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-text>
+        Total Amount :  <b>Rp {{totalAmount}}</b>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
