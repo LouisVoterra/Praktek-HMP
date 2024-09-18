@@ -16,6 +16,31 @@ interface Product {
 export class ListPage implements OnInit {
 
   today:string='11 September 2024'
+
+  books = [
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      publishedDate: new Date('1960-07-11'),
+      price: 7.99,
+      discount: 10
+    },
+    {
+      title: 'The Great Gatsby',
+      author: 'F. Scott Fitzgerald',
+      publishedDate: new Date('1925-04-10'),
+      price: 10.99,
+      discount:5
+    },
+    {
+      title: 'Pride and Prejudice',
+      author: 'Jane Austen',
+      publishedDate: new Date('1813-01-28'),
+      price: 12.75,
+      discount: 15
+    }
+  ]
+
   
   currentDate = new Date();
   is5daysago:boolean = false;
@@ -23,6 +48,37 @@ export class ListPage implements OnInit {
   yesterday_clicked:number = 0;
   tomorrow_clicked:number = 0;
   totalAmount:number = 0;
+  textcolor:string = "red";
+  // warning:string = "yellow";
+  // danger:string = "red";
+  // success:string = "green";
+
+
+  couponcode:string="0000"
+  strvalid:string="Invalid"
+  discount:number=0
+
+  checkValid(){
+
+    if(this.couponcode == "1234"){
+      this.strvalid = "Valid"
+      this.discount = 5
+      this.textcolor = "green";
+      this.books.forEach(book => {
+        book.discount = 5 + book.discount;
+      });
+
+    }else if(this.couponcode == "6789"){
+      this.strvalid = "Valid"
+      this.discount = 10
+      this.textcolor = "green";
+      this.books.forEach(book => {
+        book.discount = 10 + book.discount;
+      });
+
+    }
+  }
+
 
 
   today_ind():string {

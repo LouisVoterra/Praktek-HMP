@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>setting</ion-title>
+    <ion-title>Setting</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +10,29 @@
       <ion-title size="large">setting</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Masukkan Photo URL : " [(ngModel)]="foto" > </ion-input>
+    </ion-item>
+    <ion-item>
+      <img [src]="foto">
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Masukkan Password : " [(ngModel)]="password"  (keyup)="checkPassword()"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>More than 6 characters</ion-label>
+      <ion-checkbox slot="start" [checked]="morethan6"></ion-checkbox>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Inlcude Number</ion-label>
+      <ion-checkbox slot="start" [checked]="number"></ion-checkbox>
+    </ion-item>  
+    <ion-item>
+      <ion-label>Include Special Character</ion-label>
+      <ion-checkbox slot="start" [checked]="symbol"></ion-checkbox>
+    </ion-item>    
+  </ion-list>
 </ion-content>
