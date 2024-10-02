@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FoodserviceService } from './foodservice.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  totalpasta:number = this.foodService.pastas.length;
+  constructor(private foodService:FoodserviceService
+  ){}
 }

@@ -23,6 +23,18 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
   },
+  {
+    path: 'pasta',
+    loadChildren: () => import('./pasta/pasta.module').then( m => m.PastaPageModule)
+  },
+  {
+    path: 'pastadetail',
+    loadChildren: () => import('./pastadetail/pastadetail.module').then( m => m.PastadetailPageModule)
+  },
+  {
+    path: 'newpasta',
+    loadChildren: () => import('./newpasta/newpasta.module').then( m => m.NewpastaPageModule)
+  },
   
 ];
 
