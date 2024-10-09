@@ -9,7 +9,7 @@ const routes: Routes = [
     component: PastaPage
   },
   {
-    path: 'pastadetail',
+    path: 'pastadetail/:index',
     loadChildren: () => import('../pastadetail/pastadetail.module').then( m => m.PastadetailPageModule)
   
   }

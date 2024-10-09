@@ -1,21 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/pasta"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ pasta.name }}</ion-title>
+    <ion-title>Pasta Detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-img alt="{{ pasta.name }}" [src]="pasta.url"></ion-img>
-    <ion-card-header>
-      <ion-card-title>{{ pasta.name }}</ion-card-title>
-      <ion-card-subtitle>{{ pasta.price | currency: 'IDR' }}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <p>{{ pasta.description }}</p>
-    </ion-card-content>
-  </ion-card>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title size="large">Pasta Detail</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="content">
+    <ion-card>
+      <img [src]="pastas[index].url" />
+      <ion-card-header>
+        <ion-card-title>{{pastas[index].name}}</ion-card-title>
+        <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>{{pastas[index].description}}</ion-item>
+          <ion-item>Price : {{pastas[index].price}}</ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

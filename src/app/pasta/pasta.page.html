@@ -26,7 +26,7 @@
     <ion-accordion-group expand="inset" *ngIf="jenistampilan === 'accordion'">
       <ion-accordion *ngFor="let pasta of pastas" value="pasta.name">
         <ion-item slot="header" color="light">
-          <ion-label>{{ pasta.name }}</ion-label>
+          <ion-label color="success">{{ pasta.name }}</ion-label>
         </ion-item>
         <div slot="content" class="ion-padding">
           <img alt="{{ pasta.name }}" [src]="pasta.url" />
@@ -41,9 +41,9 @@
 
 
     <div *ngIf="jenistampilan === 'card'" class="ion-padding">
-      <ion-card *ngFor="let pasta of pastas">
+      <ion-card color="primary" *ngFor="let pasta of pastas">
         <img alt="{{ pasta.name }}" [src]="pasta.url" />
-        <ion-card-header>
+        <ion-card-header color="primary">
           <ion-card-title>{{ pasta.name }}</ion-card-title>
           <ion-card-subtitle>{{ pasta.price | currency: 'IDR' }}</ion-card-subtitle>
         </ion-card-header>
@@ -60,7 +60,7 @@
       <ion-row *ngFor="let pastas2 of chunkArray(pastas, 2); let i = index">
         <ion-col *ngFor="let pasta of pastas2; let i2 = index">
           <ion-list>
-            <ion-item>
+            <ion-item color="primary">
               <ion-img [src]="pasta.url"></ion-img>
             </ion-item>
             <ion-item routerLink="/pastadetail/{{(i*2)+i2}}">
