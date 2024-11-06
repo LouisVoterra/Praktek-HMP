@@ -7,7 +7,7 @@ import { FoodserviceService } from './foodservice.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  totalpasta:number = this.foodService.pastas.length;
-  constructor(private foodService:FoodserviceService
-  ){}
+  // totalpasta:number = this.foodService.pastaList.length;
+  // constructor(private foodService:FoodserviceService
+  // ){}
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PastaPage } from '../pasta/pasta.page';
+import { ActivatedRoute,Router } from '@angular/router';
 import { FoodserviceService } from '../foodservice.service';
 
 @Component({
@@ -9,18 +8,60 @@ import { FoodserviceService } from '../foodservice.service';
   styleUrls: ['./pastadetail.page.scss'],
 })
 export class PastadetailPage implements OnInit {
-  pasta: any
-  pastas:any[]=[]
+  
+  pastas: any = {};  
+  instruction: string = ""
+  step : number = 0 ;
   index = 0;
-  constructor(private route: ActivatedRoute, private foodService:FoodserviceService) {}
+
+  constructor(private route: ActivatedRoute, private foodService: FoodserviceService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.index = +params['index'];
-      this.pasta = this.pastas[this.index];
+    
+    this.route.params.subscribe(params => {
+      const id = params["index"];
+      
+      this.foodService.pastaDetail(id).subscribe(
+        (data) => {
+          console.log(data); 
+          this.pastas = data;
+        },
+        (error) => {
+          console.error('Error fetching pasta details:', error);
+        }
+      );
     });
-
-    this.pastas = this.foodService.pastas;
   }
 
+  deletepasta(id:any) {
+    this.foodService.deletePasta(id).subscribe((response: any) => {
+       if(response.result==='success'){
+         alert("success")
+         this.router.navigate(['/pasta']) 
+       }
+       else {
+         alert(response.message)
+       }
+   });
+ }
+
+ 
+ submitInstruction() {
+  const pasta_id = this.pastas.id; // pastikan id ini sudah tersedia di this.pastas
+  this.foodService.addInstruction(pasta_id, this.step, this.instruction).subscribe((response: any) => {
+    if (response.result === 'success') {
+      alert("Instruction added successfully!");
+    } else {
+      alert(response.message);
+    }
+  });
+
+  this.router.navigate(['/pastadetail']);
+}
+
+
+
+ 
 }

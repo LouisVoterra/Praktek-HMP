@@ -30,12 +30,31 @@ export class NewpastaPage implements OnInit {
   }
 
 
+  // submitpasta()
+  // {
+  //    this.foodService.addPasta(this.new_name,this.foto,this.new_desc,this.price,this.spicy)
+  //    this.router.navigate(['/pasta']);
+
+  // }
+
   submitpasta()
   {
-     this.foodService.addPasta(this.new_name,this.foto,this.new_desc,this.price,this.spicy)
-     this.router.navigate(['/pasta']);
+  //this.foodservice.addPasta(this.new_name,this.new_url,this.new_desc,this.new_price)
+   this.foodService.addPasta(this.new_name,            
+      this.foto,this.new_desc,this.price,this.spicy).subscribe((response: any) => {
+        if(response.result==='success'){
+          console.log("Success!")
+        }
+        else
+        {
+          alert(response.message)
+        }
+   });
 
-  }
+   this.router.navigate(['/pasta']);
+
+}
+
 
 
 

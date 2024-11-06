@@ -10,6 +10,7 @@ export class PastaPage implements OnInit {
 
   jenistampilan="accordion"
   pastas:any[]=[]
+  search:string = ""
   
   
 
@@ -52,7 +53,29 @@ export class PastaPage implements OnInit {
   constructor(private foodService:FoodserviceService) { }
 
   ngOnInit() {
-    this.pastas = this.foodService.pastas;
+    // this.pastas = this.foodService.pastas;
+    this.foodService.pastaList().subscribe(
+      (data)=>{
+        this.pastas = data;
+      }
+    )
+
   }
+
+  search_pasta() {
+    
+    this.foodService.searchPasta(this.search).subscribe(
+      (data)=>{
+        this.pastas = data;
+      }
+    );
+  }
+
+  ionViewWillEnter() {
+    this.foodService.pastaList().subscribe((data) => {
+      this.pastas = data;
+    })
+  }
+
 
 }

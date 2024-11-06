@@ -4,6 +4,16 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Pasta Detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="secondary" routerLink="/editpasta/{{pastas.id}}"> 
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="danger" (click)="deletepasta(pastas.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
@@ -14,22 +24,44 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title size="large">Pasta Detail</ion-title>
+    
+
     </ion-toolbar>
   </ion-header>
 
   <div id="content">
     <ion-card>
-      <img [src]="pastas[index].url" />
+      <img [src]="pastas.url" />
       <ion-card-header>
-        <ion-card-title>{{pastas[index].name}}</ion-card-title>
-        <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+        <ion-card-title>{{ pastas.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
-          <ion-item>{{pastas[index].description}}</ion-item>
-          <ion-item>Price : {{pastas[index].price}}</ion-item>
+          <ion-item>{{ pastas.description }}</ion-item>
+          <ion-item>Price: {{ pastas.price }}</ion-item>
         </ion-list>
+        <ion-label>Pasta Recipe Instruction:</ion-label>
+        <ol>
+          <li *ngFor="let ins of pastas.instruction">
+            {{ ins.instruction }}
+          </li>
+        </ol>
       </ion-card-content>
     </ion-card>
   </div>
+
+
+  <ion-item>
+    <ion-label>Add New Instruction</ion-label>
+  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="step" type="number" label="Step" labelPlacement="floating" />
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="instruction" label="Instruction" labelPlacement="floating" />
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="submitInstruction()">ADD</ion-button>
+  
 </ion-content>

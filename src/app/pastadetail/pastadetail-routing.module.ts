@@ -7,6 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: PastadetailPage
+  },
+  {
+    path: 'editpasta/:id',
+    loadChildren: () => import('../editpasta/editpasta.module').then( m => m.EditpastaPageModule)
+  
   }
 ];
 
