@@ -38,6 +38,12 @@
 
           
           <ion-badge *ngIf="pasta.spicy" color="danger">Spicy</ion-badge>
+          <ion-item>
+            <ion-button (click)="addtocart(pasta.id,pasta.name,pasta.price,1)">
+              Add to Cart
+            </ion-button>
+          </ion-item>
+          
         </div>
       </ion-accordion>
     </ion-accordion-group>
