@@ -12,6 +12,21 @@
   </ion-header>
   <div>
     <ion-list>
+      <ion-item>
+        <ion-radio-group [(ngModel)]="imageType">
+           <ion-radio value="URL" justify="start" labelPlacement="end">URL</ion-radio>
+           <ion-radio value="Camera" justify="start" labelPlacement="end">Camera</ion-radio>
+        </ion-radio-group>
+     </ion-item>
+     <ion-item *ngIf="imageType=='Camera'">
+        <ion-button (click)="captureImage()">Capture Image</ion-button>
+        <ion-img [src]="base64"/>
+     </ion-item>
+     <ion-item *ngIf="imageType=='URL'">
+        <ion-input [(ngModel)]="foto" label="URL" labelPlacement="floating" />
+        <ion-img [src]="foto"/>
+     </ion-item>
+     
     <ion-item>
       <ion-input labelPlacement="floating" label="Name : " [(ngModel)]="new_name"> </ion-input>
     </ion-item>

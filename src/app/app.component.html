@@ -1,8 +1,9 @@
-<ion-app>
-  <ion-router-outlet id="main-content"></ion-router-outlet>
-  <!-- tabs.page.html -->
+<ion-router-outlet *ngIf="fullname" id="main-content"></ion-router-outlet>
 
-  <ion-menu auto-hide="true" contentId="main-content">
+
+<ion-app>
+  <ion-menu *ngIf="fullname" content-id="main-content" auto-hide="true">
+
     <ion-header>
     <ion-toolbar>
     <ion-title>Menu List</ion-title>
@@ -10,6 +11,7 @@
     </ion-header>
     <ion-content class="ion-padding">
     <ion-list>
+
 
       <ion-menu-toggle>
         <ion-avatar>
@@ -58,13 +60,32 @@
           <ion-label>About</ion-label>
           </ion-item>
       </ion-menu-toggle>
+
+      <ion-item >
+        <ion-button (click)="logout()">Logout</ion-button>
+      </ion-item>
       
     </ion-list>
     </ion-content>
     </ion-menu>
+
+    <ion-content *ngIf="!fullname" class="ion-padding">
+      <img src="https://ubaya.xyz/hybrid/miftah/pasta.jpg" />
+      <ion-card>
+         <ion-item>
+            <ion-input [(ngModel)]="username" label="Username" labelPlacement="floating" />
+         </ion-item>
+         <ion-item>
+            <ion-input [(ngModel)]="password" type="password" label="Password" labelPlacement="floating" />
+         </ion-item>
+         <ion-button expand="block" (click)="login()">Login</ion-button>
+      </ion-card>
+    </ion-content>
+
+   
     
 
-<ion-tabs>
+<ion-tabs *ngIf="fullname" >
   <ion-tab-bar slot="bottom">
   <ion-tab-button tab="home">
   <ion-icon name="home"></ion-icon>
@@ -83,7 +104,6 @@
 
   </ion-tab-bar>
 </ion-tabs>
-
-  
   
 </ion-app>
+

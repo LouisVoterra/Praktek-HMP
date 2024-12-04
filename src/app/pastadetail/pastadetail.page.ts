@@ -60,8 +60,5 @@ export class PastadetailPage implements OnInit {
 
   this.router.navigate(['/pastadetail']);
 }
-
-
-
  
 }
