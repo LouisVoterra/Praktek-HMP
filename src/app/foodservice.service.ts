@@ -90,4 +90,26 @@ export class FoodserviceService {
   return this.http.post("https://ubaya.xyz/hybrid/160422077/upload_image.php", urlEncodedData, { headers });
 }
 
+position_xy(): Observable<any> {
+  return this.http.get("https://ubaya.xyz/posisi_xy.php");
+}
+
+updatePosisi(lat: number, lon: number): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+  const body = new URLSearchParams();
+  body.set('latitude', lat.toString());
+  body.set('longitude', lon.toString());
+  const urlEncodedData = body.toString();
+  return this.http.post("https://ubaya.xyz/hybrid/160422077/update_posisi.php", urlEncodedData, { headers });
+}
+
+tampilkanPosisi(lat: number, lon: number): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+  const body = new URLSearchParams();
+  body.set('latitude', lat.toString());
+  body.set('longitude', lon.toString());
+  const urlEncodedData = body.toString();
+  return this.http.post("https://ubaya.xyz/hybrid/160422077/posisi.php", urlEncodedData, { headers });
+}
+
 }
