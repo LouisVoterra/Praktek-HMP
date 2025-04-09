@@ -1,2 +1,2 @@
-Hybrid Mobile Programming merupakan salah satu matakuliah yang mengajarkan peserta didik membuat aplikasi web based yang bisa diakses menggunakan mobile. 
+Semua Exercise Hybrid Mobile Programming selama 1 semester
 
